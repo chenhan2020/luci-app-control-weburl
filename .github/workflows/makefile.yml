@@ -13,7 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
+    - name: Delete feeds
+      run: rm -rf ./feeds && ./scripts/feeds update -a && ./scripts/feeds install -a && rm -rf ./tmp && make menuconfig
     - name: Install dependencies
       run: make
 
